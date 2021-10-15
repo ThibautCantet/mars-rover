@@ -1,5 +1,8 @@
 package com.mars;
 
 public enum Direction {
-    W
+    W,
+    E,
+    S,
+    N
 }
