@@ -1,7 +1,7 @@
 package com.mars;
 
 public class Rover {
-    private final int x;
+    private int x;
     private int y;
     private Direction direction;
 
@@ -32,6 +32,8 @@ public class Rover {
             case FORWARD:
                 if (direction.equals(Direction.S)) {
                     y--;
+                } else if (direction.equals(Direction.W)) {
+                    x--;
                 } else {
                     y++;
                 }
@@ -39,6 +41,8 @@ public class Rover {
             case BACKWARD:
                 if (direction.equals(Direction.N)) {
                     y--;
+                } else if (direction.equals(Direction.W)) {
+                    x++;
                 } else {
                     y++;
                 }
@@ -46,12 +50,20 @@ public class Rover {
             case LEFT:
                 if (direction.equals(Direction.N)) {
                     direction = Direction.W;
+                } else if (direction.equals(Direction.W)) {
+                    direction = Direction.S;
                 } else {
                     direction = Direction.E;
                 }
                 break;
             case RIGHT:
-                direction = Direction.W;
+                if (direction.equals(Direction.N)) {
+                    direction = Direction.E;
+                } else if (direction.equals(Direction.W)) {
+                    direction = Direction.N;
+                } else {
+                    direction = Direction.W;
+                }
         }
     }
 }

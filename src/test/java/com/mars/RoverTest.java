@@ -1,6 +1,5 @@
 package com.mars;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -166,7 +165,64 @@ class RoverTest {
             rover.move(Command.RIGHT);
 
             // then
-            assertThat(rover.getDirection()).isEqualTo(Direction.W);
+            assertThat(rover.getDirection()).isEqualTo(Direction.E);
+            assertThat(rover.getX()).isEqualTo(x);
+            assertThat(rover.getY()).isEqualTo(y);
+        }
+    }
+
+    @Nested
+    class WhenDirectionIsWest {
+        private final Direction WEST = Direction.W;
+
+        @Test
+        void move_forward_doit_modifier_coordonnee_y_a_2_quand_la_position_initiale_est_0_0_W() {
+            // given
+            final Rover rover = Rover.create(x, y, WEST);
+
+            // when
+            rover.move(Command.FORWARD);
+
+            // then
+            assertThat(rover.getX()).isEqualTo(-1);
+        }
+
+        @Test
+        void move_backward_doit_modifier_coordonnee_y_a_0_quand_la_position_initiale_est_0_0_W() {
+            // given
+            final Rover rover = Rover.create(x, y, WEST);
+
+            // when
+            rover.move(Command.BACKWARD);
+
+            // then
+            assertThat(rover.getX()).isEqualTo(1);
+        }
+
+        @Test
+        void turn_left_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_W() {
+            // given
+            final Rover rover = Rover.create(x, y, WEST);
+
+            // when
+            rover.move(Command.LEFT);
+
+            // then
+            assertThat(rover.getDirection()).isEqualTo(Direction.S);
+            assertThat(rover.getX()).isEqualTo(x);
+            assertThat(rover.getY()).isEqualTo(y);
+        }
+
+        @Test
+        void turn_right_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_W() {
+            // given
+            final Rover rover = Rover.create(x, y, WEST);
+
+            // when
+            rover.move(Command.RIGHT);
+
+            // then
+            assertThat(rover.getDirection()).isEqualTo(Direction.N);
             assertThat(rover.getX()).isEqualTo(x);
             assertThat(rover.getY()).isEqualTo(y);
         }
