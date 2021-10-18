@@ -30,13 +30,25 @@ public class Rover {
     public void move(Command command) {
         switch (command) {
             case FORWARD:
-                y++;
+                if (direction.equals(Direction.S)) {
+                    y--;
+                } else {
+                    y++;
+                }
                 break;
             case BACKWARD:
-                y--;
+                if (direction.equals(Direction.N)) {
+                    y--;
+                } else {
+                    y++;
+                }
                 break;
             case LEFT:
-                direction = Direction.E;
+                if (direction.equals(Direction.N)) {
+                    direction = Direction.W;
+                } else {
+                    direction = Direction.E;
+                }
                 break;
             case RIGHT:
                 direction = Direction.W;
