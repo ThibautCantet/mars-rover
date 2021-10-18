@@ -34,6 +34,8 @@ public class Rover {
                     y--;
                 } else if (direction.equals(Direction.W)) {
                     x--;
+                } else if (direction.equals(Direction.E)) {
+                    x++;
                 } else {
                     y++;
                 }
@@ -43,6 +45,8 @@ public class Rover {
                     y--;
                 } else if (direction.equals(Direction.W)) {
                     x++;
+                } else if (direction.equals(Direction.E)) {
+                    x--;
                 } else {
                     y++;
                 }
@@ -52,6 +56,8 @@ public class Rover {
                     direction = Direction.W;
                 } else if (direction.equals(Direction.W)) {
                     direction = Direction.S;
+                } else if (direction.equals(Direction.E)) {
+                    direction = Direction.N;
                 } else {
                     direction = Direction.E;
                 }
@@ -61,6 +67,8 @@ public class Rover {
                     direction = Direction.E;
                 } else if (direction.equals(Direction.W)) {
                     direction = Direction.N;
+                }else if (direction.equals(Direction.E)) {
+                    direction = Direction.S;
                 } else {
                     direction = Direction.W;
                 }
