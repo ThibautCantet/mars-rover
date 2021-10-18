@@ -3,7 +3,7 @@ package com.mars;
 public class Rover {
     private final int x;
     private int y;
-    private final Direction direction;
+    private Direction direction;
 
     private Rover(int x, int y, Direction direction) {
         this.x = x;
@@ -28,10 +28,18 @@ public class Rover {
     }
 
     public void move(Command command) {
-        if (command.equals(Command.FORWARD)) {
-            y++;
-        } else {
-            y--;
+        switch (command) {
+            case FORWARD:
+                y++;
+                break;
+            case BACKWARD:
+                y--;
+                break;
+            case LEFT:
+                direction = Direction.E;
+                break;
+            case RIGHT:
+                direction = Direction.W;
         }
     }
 }

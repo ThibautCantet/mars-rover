@@ -1,6 +1,5 @@
 package com.mars;
 
-import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -58,28 +57,61 @@ class RoverTest {
 
     }
 
-    @Test
-    void move_forward_doit_modifier_coordonnee_y_a_2_quand_la_position_initiale_est_1_1_S() {
-        // given
-        final Rover rover = Rover.create(x, y, Direction.S);
+    @Nested
+    class WhenDirectionIsSouth {
+        private final Direction SOUTH = Direction.S;
 
-        // when
-        rover.move(Command.FORWARD);
+        @Test
+        void move_forward_doit_modifier_coordonnee_y_a_2_quand_la_position_initiale_est_1_1_S() {
+            // given
+            final Rover rover = Rover.create(x, y, SOUTH);
 
-        // then
-        assertThat(rover.getY()).isEqualTo(2);
-    }
+            // when
+            rover.move(Command.FORWARD);
 
-    @Test
-    void move_backward_doit_modifier_coordonnee_y_a_0_quand_la_position_initiale_est_1_1_S() {
-        // given
-        final Rover rover = Rover.create(x, y, Direction.S);
+            // then
+            assertThat(rover.getY()).isEqualTo(2);
+        }
 
-        // when
-        rover.move(Command.BACKWARD);
+        @Test
+        void move_backward_doit_modifier_coordonnee_y_a_0_quand_la_position_initiale_est_1_1_S() {
+            // given
+            final Rover rover = Rover.create(x, y, SOUTH);
 
-        // then
-        assertThat(rover.getY()).isZero();
+            // when
+            rover.move(Command.BACKWARD);
+
+            // then
+            assertThat(rover.getY()).isZero();
+        }
+
+        @Test
+        void turn_left_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_1_1_S() {
+            // given
+            final Rover rover = Rover.create(x, y, SOUTH);
+
+            // when
+            rover.move(Command.LEFT);
+
+            // then
+            assertThat(rover.getDirection()).isEqualTo(Direction.E);
+            assertThat(rover.getX()).isEqualTo(x);
+            assertThat(rover.getY()).isEqualTo(y);
+        }
+
+        @Test
+        void turn_right_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_1_1_S() {
+            // given
+            final Rover rover = Rover.create(x, y, SOUTH);
+
+            // when
+            rover.move(Command.RIGHT);
+
+            // then
+            assertThat(rover.getDirection()).isEqualTo(Direction.W);
+            assertThat(rover.getX()).isEqualTo(x);
+            assertThat(rover.getY()).isEqualTo(y);
+        }
     }
 }
 
