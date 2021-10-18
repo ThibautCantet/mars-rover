@@ -30,48 +30,64 @@ public class Rover {
     public void move(Command command) {
         switch (command) {
             case FORWARD:
-                if (direction.equals(Direction.S)) {
-                    y--;
-                } else if (direction.equals(Direction.W)) {
-                    x--;
-                } else if (direction.equals(Direction.E)) {
-                    x++;
-                } else {
-                    y++;
-                }
+                moveForward();
                 break;
             case BACKWARD:
-                if (direction.equals(Direction.N)) {
-                    y--;
-                } else if (direction.equals(Direction.W)) {
-                    x++;
-                } else if (direction.equals(Direction.E)) {
-                    x--;
-                } else {
-                    y++;
-                }
+                moveBackward();
                 break;
             case LEFT:
-                if (direction.equals(Direction.N)) {
-                    direction = Direction.W;
-                } else if (direction.equals(Direction.W)) {
-                    direction = Direction.S;
-                } else if (direction.equals(Direction.E)) {
-                    direction = Direction.N;
-                } else {
-                    direction = Direction.E;
-                }
+                turnLeft();
                 break;
             case RIGHT:
-                if (direction.equals(Direction.N)) {
-                    direction = Direction.E;
-                } else if (direction.equals(Direction.W)) {
-                    direction = Direction.N;
-                }else if (direction.equals(Direction.E)) {
-                    direction = Direction.S;
-                } else {
-                    direction = Direction.W;
-                }
+                turnRight();
+        }
+    }
+
+    private void moveForward() {
+        if (direction.equals(Direction.S)) {
+            y--;
+        } else if (direction.equals(Direction.W)) {
+            x--;
+        } else if (direction.equals(Direction.E)) {
+            x++;
+        } else {
+            y++;
+        }
+    }
+
+    private void moveBackward() {
+        if (direction.equals(Direction.N)) {
+            y--;
+        } else if (direction.equals(Direction.W)) {
+            x++;
+        } else if (direction.equals(Direction.E)) {
+            x--;
+        } else {
+            y++;
+        }
+    }
+
+    private void turnLeft() {
+        if (direction.equals(Direction.N)) {
+            direction = Direction.W;
+        } else if (direction.equals(Direction.W)) {
+            direction = Direction.S;
+        } else if (direction.equals(Direction.E)) {
+            direction = Direction.N;
+        } else {
+            direction = Direction.E;
+        }
+    }
+
+    private void turnRight() {
+        if (direction.equals(Direction.N)) {
+            direction = Direction.E;
+        } else if (direction.equals(Direction.W)) {
+            direction = Direction.N;
+        }else if (direction.equals(Direction.E)) {
+            direction = Direction.S;
+        } else {
+            direction = Direction.W;
         }
     }
 }
