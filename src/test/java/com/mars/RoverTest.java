@@ -70,7 +70,7 @@ class RoverTest {
             rover.move(Command.FORWARD);
 
             // then
-            assertThat(rover.getY()).isEqualTo(-1);
+            assertThat(rover.getY()).isEqualTo(4);
         }
 
         @Test
@@ -139,7 +139,7 @@ class RoverTest {
             rover.move(Command.BACKWARD);
 
             // then
-            assertThat(rover.getY()).isEqualTo(-1);
+            assertThat(rover.getY()).isEqualTo(4);
         }
 
         @Test
@@ -184,7 +184,7 @@ class RoverTest {
             rover.move(Command.FORWARD);
 
             // then
-            assertThat(rover.getX()).isEqualTo(-1);
+            assertThat(rover.getX()).isEqualTo(4);
         }
 
         @Test
@@ -252,7 +252,7 @@ class RoverTest {
             rover.move(Command.BACKWARD);
 
             // then
-            assertThat(rover.getX()).isEqualTo(-1);
+            assertThat(rover.getX()).isEqualTo(4);
         }
 
         @Test
