@@ -20,7 +20,7 @@ class RoverTest {
         @Test
         void le_rover_nest_pas_null() {
             // when, act
-            final Rover rover = Rover.create(x, y, Direction.W);
+            final Rover rover = Rover.create(new Coordinate(x, y), Direction.W);
 
             // then, assert
             assertThat(rover).isNotNull();
@@ -30,7 +30,7 @@ class RoverTest {
         @MethodSource("provideDirections")
         void le_rover_est_oriente_vers_sa_direction_initiale(Direction direction) {
             // when, act
-            final Rover rover = Rover.create(x, y, direction);
+            final Rover rover = Rover.create(new Coordinate(x, y), direction);
 
             // then, assert
             assertThat(rover.getDirection()).isEqualTo(direction);
@@ -44,7 +44,7 @@ class RoverTest {
         @MethodSource("provideCoordonnees")
         void le_rover_est_positionne_aux_coordonnees_initiales(Integer x, Integer y) {
             // when, act
-            final Rover rover = Rover.create(x, y, Direction.W);
+            final Rover rover = Rover.create(new Coordinate(x, y), Direction.W);
 
             // then, assert
             assertThat(rover.getX()).isEqualTo(x);
@@ -64,7 +64,7 @@ class RoverTest {
         @Test
         void move_forward_doit_modifier_coordonnee_y_a_2_quand_la_position_initiale_est_0_0_S() {
             // given
-            final Rover rover = Rover.create(x, y, SOUTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), SOUTH);
 
             // when
             rover.move(Command.FORWARD);
@@ -76,7 +76,7 @@ class RoverTest {
         @Test
         void move_backward_doit_modifier_coordonnee_y_a_0_quand_la_position_initiale_est_0_0_S() {
             // given
-            final Rover rover = Rover.create(x, y, SOUTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), SOUTH);
 
             // when
             rover.move(Command.BACKWARD);
@@ -88,7 +88,7 @@ class RoverTest {
         @Test
         void turn_left_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_S() {
             // given
-            final Rover rover = Rover.create(x, y, SOUTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), SOUTH);
 
             // when
             rover.move(Command.LEFT);
@@ -102,7 +102,7 @@ class RoverTest {
         @Test
         void turn_right_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_S() {
             // given
-            final Rover rover = Rover.create(x, y, SOUTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), SOUTH);
 
             // when
             rover.move(Command.RIGHT);
@@ -121,7 +121,7 @@ class RoverTest {
         @Test
         void move_forward_doit_modifier_coordonnee_y_a_2_quand_la_position_initiale_est_0_0_N() {
             // given
-            final Rover rover = Rover.create(x, y, NORTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), NORTH);
 
             // when
             rover.move(Command.FORWARD);
@@ -133,7 +133,7 @@ class RoverTest {
         @Test
         void move_backward_doit_modifier_coordonnee_y_a_0_quand_la_position_initiale_est_0_0_N() {
             // given
-            final Rover rover = Rover.create(x, y, NORTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), NORTH);
 
             // when
             rover.move(Command.BACKWARD);
@@ -145,7 +145,7 @@ class RoverTest {
         @Test
         void turn_left_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_N() {
             // given
-            final Rover rover = Rover.create(x, y, NORTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), NORTH);
 
             // when
             rover.move(Command.LEFT);
@@ -159,7 +159,7 @@ class RoverTest {
         @Test
         void turn_right_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_N() {
             // given
-            final Rover rover = Rover.create(x, y, NORTH);
+            final Rover rover = Rover.create(new Coordinate(x, y), NORTH);
 
             // when
             rover.move(Command.RIGHT);
@@ -178,7 +178,7 @@ class RoverTest {
         @Test
         void move_forward_doit_modifier_coordonnee_y_a_2_quand_la_position_initiale_est_0_0_W() {
             // given
-            final Rover rover = Rover.create(x, y, WEST);
+            final Rover rover = Rover.create(new Coordinate(x, y), WEST);
 
             // when
             rover.move(Command.FORWARD);
@@ -190,7 +190,7 @@ class RoverTest {
         @Test
         void move_backward_doit_modifier_coordonnee_y_a_0_quand_la_position_initiale_est_0_0_W() {
             // given
-            final Rover rover = Rover.create(x, y, WEST);
+            final Rover rover = Rover.create(new Coordinate(x, y), WEST);
 
             // when
             rover.move(Command.BACKWARD);
@@ -202,7 +202,7 @@ class RoverTest {
         @Test
         void turn_left_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_W() {
             // given
-            final Rover rover = Rover.create(x, y, WEST);
+            final Rover rover = Rover.create(new Coordinate(x, y), WEST);
 
             // when
             rover.move(Command.LEFT);
@@ -216,7 +216,7 @@ class RoverTest {
         @Test
         void turn_right_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_W() {
             // given
-            final Rover rover = Rover.create(x, y, WEST);
+            final Rover rover = Rover.create(new Coordinate(x, y), WEST);
 
             // when
             rover.move(Command.RIGHT);
@@ -234,7 +234,7 @@ class RoverTest {
         @Test
         void move_forward_doit_modifier_coordonnee_y_a_2_quand_la_position_initiale_est_0_0_E() {
             // given
-            final Rover rover = Rover.create(x, y, EAST);
+            final Rover rover = Rover.create(new Coordinate(x, y), EAST);
 
             // when
             rover.move(Command.FORWARD);
@@ -246,7 +246,7 @@ class RoverTest {
         @Test
         void move_backward_doit_modifier_coordonnee_y_a_0_quand_la_position_initiale_est_0_0_E() {
             // given
-            final Rover rover = Rover.create(x, y, EAST);
+            final Rover rover = Rover.create(new Coordinate(x, y), EAST);
 
             // when
             rover.move(Command.BACKWARD);
@@ -258,7 +258,7 @@ class RoverTest {
         @Test
         void turn_left_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_E() {
             // given
-            final Rover rover = Rover.create(x, y, EAST);
+            final Rover rover = Rover.create(new Coordinate(x, y), EAST);
 
             // when
             rover.move(Command.LEFT);
@@ -272,7 +272,7 @@ class RoverTest {
         @Test
         void turn_right_doit_modifier_la_direction_mais_pas_les_coordonnees_quand_la_position_initiale_est_0_0_E() {
             // given
-            final Rover rover = Rover.create(x, y, EAST);
+            final Rover rover = Rover.create(new Coordinate(x, y), EAST);
 
             // when
             rover.move(Command.RIGHT);

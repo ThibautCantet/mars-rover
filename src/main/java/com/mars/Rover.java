@@ -5,14 +5,14 @@ public class Rover {
     private int y;
     private Direction direction;
 
-    private Rover(int x, int y, Direction direction) {
-        this.x = x;
-        this.y = y;
+    private Rover(Coordinate coordinate, Direction direction) {
+        this.x = coordinate.x();
+        this.y = coordinate.y();
         this.direction = direction;
     }
 
-    public static Rover create(int x, int y, Direction direction) {
-        return new Rover(x, y, direction);
+    public static Rover create(Coordinate coordinate, Direction direction) {
+        return new Rover(coordinate, direction);
     }
 
     public Direction getDirection() {
