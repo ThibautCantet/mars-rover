@@ -1,13 +1,11 @@
 package com.mars;
 
 public class Rover {
-    private int x;
-    private int y;
+    private Coordinate coordinate;
     private Direction direction;
 
     private Rover(Coordinate coordinate, Direction direction) {
-        this.x = coordinate.x();
-        this.y = coordinate.y();
+        this.coordinate = coordinate;
         this.direction = direction;
     }
 
@@ -20,11 +18,11 @@ public class Rover {
     }
 
     public Integer getX() {
-        return x;
+        return coordinate.x();
     }
 
     public Integer getY() {
-        return y;
+        return coordinate.y();
     }
 
     public void move(Command command) {
@@ -44,6 +42,8 @@ public class Rover {
     }
 
     private void moveForward() {
+        Integer y = coordinate.x();
+        Integer x = coordinate.y();
         if (direction.equals(Direction.S)) {
             y--;
         } else if (direction.equals(Direction.W)) {
@@ -53,9 +53,12 @@ public class Rover {
         } else {
             y++;
         }
+        coordinate = new Coordinate(x, y);
     }
 
     private void moveBackward() {
+        Integer y = coordinate.x();
+        Integer x = coordinate.y();
         if (direction.equals(Direction.N)) {
             y--;
         } else if (direction.equals(Direction.W)) {
@@ -65,6 +68,7 @@ public class Rover {
         } else {
             y++;
         }
+        coordinate = new Coordinate(x, y);
     }
 
     private void turnLeft() {
