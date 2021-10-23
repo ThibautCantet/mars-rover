@@ -1,6 +1,7 @@
 package com.mars;
 
 public class Rover {
+    private static Detector detector;
     private Coordinate coordinate;
     private Direction direction;
 
@@ -9,7 +10,8 @@ public class Rover {
         this.direction = direction;
     }
 
-    public static Rover create(Coordinate coordinate, Direction direction) {
+    public static Rover create(Detector detector, Coordinate coordinate, Direction direction) {
+        Rover.detector = detector;
         return new Rover(coordinate, direction);
     }
 
@@ -42,6 +44,9 @@ public class Rover {
     }
 
     private void moveForward() {
+        if (detector.probe()) {
+            return;
+        }
         Integer y = coordinate.x();
         Integer x = coordinate.y();
         if (direction.equals(Direction.S)) {
