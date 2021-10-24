@@ -1,4 +1,4 @@
-package com.mars;
+package com.mars.model;
 
 public record Coordinate(Integer x, Integer y) {
     public static Integer PLANET_SIZE = 5;

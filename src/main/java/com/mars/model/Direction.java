@@ -1,4 +1,4 @@
-package com.mars;
+package com.mars.model;
 
 public enum Direction {
     W,

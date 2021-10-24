@@ -1,4 +1,4 @@
-package com.mars;
+package com.mars.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;

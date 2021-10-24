@@ -1,4 +1,4 @@
-package com.mars;
+package com.mars.model;
 
 public class Rover {
     private static Detector detector;
