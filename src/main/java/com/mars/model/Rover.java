@@ -1,18 +1,18 @@
 package com.mars.model;
 
 public class Rover {
-    private static Detector detector;
+    private Detector detector;
     private Coordinate coordinate;
     private Direction direction;
 
-    private Rover(Coordinate coordinate, Direction direction) {
+    private Rover(Detector detector, Coordinate coordinate, Direction direction) {
+        this.detector = detector;
         this.coordinate = coordinate;
         this.direction = direction;
     }
 
     public static Rover create(Detector detector, Coordinate coordinate, Direction direction) {
-        Rover.detector = detector;
-        return new Rover(coordinate, direction);
+        return new Rover(detector, coordinate, direction);
     }
 
     public Direction getDirection() {
